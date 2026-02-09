@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<-columns: repeat(4, 1fr); } }
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -9,146 +10,60 @@
     :root {
       --bg: #ffffff;
       --text: #000000;
-      --accent: #ff0000; /* Depop Red */
       --secondary: #f5f5f5;
     }
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); -webkit-tap-highlight-color: transparent; }
 
-    /* --- DEPOP STYLE HEADER --- */
-    header {
-      padding: 15px 20px;
-      border-bottom: 1px solid #ddd;
-      position: sticky;
-      top: 0;
-      background: white;
-      z-index: 100;
-    }
+    /* --- HEADER --- */
+    header { padding: 15px 20px; border-bottom: 1px solid #ddd; position: sticky; top: 0; background: white; z-index: 100; }
     .logo { font-size: 28px; font-weight: 800; letter-spacing: -1px; margin: 0; cursor: pointer; }
     
-    /* Search Bar like Depop */
-    .search-container {
-      margin: 10px 0;
-      position: relative;
-    }
-    .search-bar {
-      width: 100%;
-      padding: 10px 15px;
-      background: var(--secondary);
-      border: none;
-      border-radius: 8px;
-      box-sizing: border-box;
-      outline: none;
-    }
+    .search-container { margin: 10px 0; }
+    .search-bar { width: 100%; padding: 12px 15px; background: var(--secondary); border: none; border-radius: 8px; outline: none; font-size: 0.9rem; }
 
-    /* Category Navigation */
-    .nav-scroll {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
-      white-space: nowrap;
-      scrollbar-width: none;
-    }
-    .nav-scroll a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-    }
+    .nav-scroll { display: flex; gap: 20px; overflow-x: auto; padding: 10px 0; border-bottom: 1px solid #eee; white-space: nowrap; scrollbar-width: none; }
+    .nav-scroll a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.85rem; cursor: pointer; }
 
-    /* --- PRODUCT GRID (SQUARE STYLE) --- */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px; /* Thin lines like Depop grid */
-      background: #eee;
-    }
-    @media (min-width: 768px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+    /* --- PRODUCT GRID --- */
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: #eee; }
+    @media (min-width: 768px) { .grid { grid-template
+    .item { background: white; padding: 0 0 15px 0; display: flex; flex-direction: column; }
+    .item img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+    .item-info { padding: 12px; text-align: left; }
+    .price { font-weight: 800; font-size: 1rem; margin-bottom: 4px; }
+    .name { font-size: 0.85rem; color: #555; margin-bottom: 12px; height: 1.2em; overflow: hidden; }
 
-    .item {
-      background: white;
-      padding: 0 0 15px 0;
-      display: flex;
-      flex-direction: column;
-    }
-    .item img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-    }
-    .item-info {
-      padding: 10px;
-      text-align: left;
-    }
-    .price { font-weight: 800; font-size: 1rem; margin: 5px 0; }
-    .name { font-size: 0.85rem; color: #555; margin-bottom: 10px; }
-
-    /* Action Buttons */
-    .btn-buy {
-      border: 1px solid #000;
-      background: transparent;
-      padding: 8px;
-      font-weight: 800;
-      cursor: pointer;
-      text-transform: uppercase;
-      font-size: 0.7rem;
-    }
+    .btn-buy { border: 1px solid #000; background: transparent; padding: 8px; font-weight: 800; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; width: 100%; transition: 0.2s; }
     .btn-buy:hover { background: #000; color: #fff; }
 
-    /* Cart Floating Button */
-    .cart-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: black;
-      color: white;
-      padding: 15px 25px;
-      border-radius: 50px;
-      font-weight: bold;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      cursor: pointer;
-      z-index: 1000;
-    }
+    /* Floating Bag Button */
+    .cart-float { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: black; color: white; padding: 14px 28px; border-radius: 50px; font-weight: 800; box-shadow: 0 8px 20px rgba(0,0,0,0.3); cursor: pointer; z-index: 1000; font-size: 0.9rem; }
 
     .page { display: none; }
     .page.active { display: block; }
 
-    /* Cart Summary Card */
-    .checkout-box {
-      background: var(--secondary);
-      padding: 20px;
-      margin: 20px;
-      border-radius: 12px;
-    }
-    .whatsapp-btn {
-      background: #25d366;
-      color: white;
-      padding: 15px;
-      display: block;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
+    /* --- CHECKOUT BOX STYLE --- */
+    .checkout-container { max-width: 500px; margin: auto; padding: 20px; }
+    .cart-item-row { display: flex; align-items: center; gap: 15px; padding: 15px 0; border-bottom: 1px solid #eee; }
+    .cart-item-row img { width: 70px; height: 70px; object-fit: cover; border-radius: 4px; }
+    
+    .place-order-box { background: var(--secondary); padding: 25px; border-radius: 15px; margin-top: 20px; text-align: center; }
+    
+    /* THE UPDATED BUTTON */
+    .btn-place-order { background: black; color: white; border: none; width: 100%; padding: 18px; border-radius: 12px; font-weight: 800; font-size: 1.1rem; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .btn-place-order:active { transform: scale(0.97); }
   </style>
 </head>
 <body>
 
 <header>
-  <h1 class="logo" onclick="showPage('home')">FLIPD</h1>
+  <h1 class="logo" onclick="location.reload()">FLIPD</h1>
   <div class="search-container">
     <input type="text" class="search-bar" placeholder="Search for items, brands, styles...">
   </div>
   <div class="nav-scroll">
-    <a onclick="showPage('home')">Explore</a>
+    <a onclick="location.reload()">Explore</a>
     <a onclick="filter('Men')">Menswear</a>
     <a onclick="filter('Women')">Womenswear</a>
     <a onclick="filter('Shoes')">Shoes</a>
@@ -156,23 +71,35 @@
   </div>
 </header>
 
-<div id="cart-btn" class="cart-float" onclick="showPage('cart-page')">
-  Cart (<span id="count">0</span>)
+<div id="cart-btn" class="cart-float" onclick="showPage('cart-page')" style="display:none;">
+  VIEW BAG (<span id="count">0</span>)
 </div>
 
 <div id="home" class="page active">
-  <div class="grid" id="product-grid">
-    </div>
+  <div class="grid" id="product-grid"></div>
 </div>
 
 <div id="cart-page" class="page">
-  <div class="checkout-box">
-    <h2>My Bag</h2>
-    <div id="cart-items">Your bag is empty.</div>
-    <hr>
-    <h3>Total: <span id="total-price">0</span> Birr</h3>
-    <a href="#" class="whatsapp-btn" onclick="orderWhatsApp()">Checkout via WhatsApp</a>
-    <button onclick="showPage('home')" style="margin-top:10px; border:none; background:none; cursor:pointer;">← Continue Shopping</button>
+  <div class="checkout-container">
+    <h2 style="font-weight: 800; font-size: 1.8rem; margin-bottom: 5px; letter-spacing: -0.5px;">My Bag</h2>
+    <div id="cart-empty-msg" style="padding: 50px 0; color: #888; text-align: center;">Your bag is currently empty.</div>
+    
+    <div id="cart-items-list"></div>
+
+    <div id="cart-summary" style="display:none;">
+        <div style="display: flex; justify-content: space-between; padding: 25px 0; font-size: 1.1rem;">
+            <span>Total</span>
+            <span style="font-weight: 800;"><span id="total-price">0</span> Birr</span>
+        </div>
+
+        <div class="place-order-box">
+            <p style="font-size: 0.7rem; color: #888; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;">Secure Checkout</p>
+            <button class="btn-place-order" onclick="orderWhatsApp()">Place Order</button>
+            <p style="font-size: 0.7rem; color: #aaa; margin-top: 15px;">You will be redirected to WhatsApp to finish your order.</p>
+        </div>
+        
+        <button onclick="showPage('home')" style="width:100%; background:none; border:none; margin-top:25px; color:#000; font-weight: 700; text-decoration: underline; cursor:pointer; font-size: 0.85rem;">Continue Shopping</button>
+    </div>
   </div>
 </div>
 
@@ -194,7 +121,7 @@
         <div class="item-info">
           <div class="price">${p.price.toLocaleString()} Birr</div>
           <div class="name">${p.name}</div>
-          <button class="btn-buy" onclick="addToCart('${p.name}', ${p.price})">Add to Bag</button>
+          <button class="btn-buy" onclick="addToCart('${p.name}')">Add to Bag</button>
         </div>
       </div>
     `).join('');
@@ -206,7 +133,7 @@
     window.scrollTo(0,0);
   }
 
-  function addToCart(name, price) {
+  function addToCart(name) {
     cart[name] = (cart[name] || 0) + 1;
     updateUI();
   }
@@ -215,28 +142,45 @@
     let count = 0; let total = 0; let html = "";
     for (let n in cart) {
       count += cart[n];
-      let p = products.find(prod => prod.name === n).price;
-      total += (p * cart[n]);
-      html += `<p><b>${n}</b> (x${cart[n]})</p>`;
+      let pData = products.find(p => p.name === n);
+      total += (pData.price * cart[n]);
+      html += `
+        <div class="cart-item-row">
+            <img src="${pData.img}">
+            <div style="flex-grow:1;">
+                <div style="font-weight:700; font-size: 0.95rem;">${n}</div>
+                <div style="font-size:0.8rem; color:#888;">Quantity: ${cart[n]}</div>
+            </div>
+            <div style="font-weight:800;">${(pData.price * cart[n]).toLocaleString()}</div>
+        </div>`;
     }
+    
     document.getElementById('count').innerText = count;
     document.getElementById('total-price').innerText = total.toLocaleString();
-    if(html) document.getElementById('cart-items').innerHTML = html;
+    document.getElementById('cart-items-list').innerHTML = html;
+    
+    document.getElementById('cart-btn').style.display = count > 0 ? "block" : "none";
+    document.getElementById('cart-summary').style.display = count > 0 ? "block" : "none";
+    document.getElementById('cart-empty-msg').style.display = count > 0 ? "none" : "block";
   }
 
   function orderWhatsApp() {
-    let msg = "Hi Mati & Abeni! New order from FLIPD:%0A";
-    for(let n in cart) msg += `- ${n} (x${cart[n]})%0A`;
+    let msg = "Hi Mati %26 Abeni! I want to buy:%0A%0A";
+    let total = 0;
+    for(let n in cart) {
+        let pData = products.find(p => p.name === n);
+        total += (pData.price * cart[n]);
+        msg += `• ${n} (x${cart[n]}) - ${(pData.price * cart[n]).toLocaleString()} Birr%0A`;
+    }
+    msg += `%0A💰 *TOTAL: ${total.toLocaleString()} Birr*`;
     window.open(`https://wa.me/251936158271?text=${msg}`);
   }
 
   function filter(cat) {
-    const filtered = products.filter(p => p.cat === cat);
-    renderProducts(filtered);
+    renderProducts(products.filter(p => p.cat === cat));
     showPage('home');
   }
 
-  // Initialize
   renderProducts(products);
 </script>
 
